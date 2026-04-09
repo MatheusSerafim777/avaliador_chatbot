@@ -75,7 +75,7 @@ def chatbot_faq_score(faq_answer: str, chatbot_answer: str) -> dict:
 ARQUIVO_ENTRADA = "comparacao_teste.csv"
 ARQUIVO_SAIDA = "comparacao_respostas_avaliado.csv"
 COLUNA_FAQ = "Resposta FAQ"
-COLUNA_CHATBOT = "Resposta com RAG"
+COLUNA_CHATBOT = "Resposta com RAG" #mude de acordo com o nome da coluna que voce esta utilizando
 # ==========================
 
 
@@ -109,7 +109,13 @@ def avaliar_csv(caminho_entrada: str, caminho_saida: str):
 
     resultados_df = pd.DataFrame(resultados)
     df_saida = pd.concat([df, resultados_df], axis=1)
-    df_saida.to_csv(caminho_saida, index=False, encoding="utf-8-sig")
+    df_saida.to_csv(
+        caminho_saida,
+        index=False,
+        encoding="utf-8-sig",
+        sep=';',
+        decimal=','
+    )
 
     print("Avaliação concluída.")
     print(f"Arquivo salvo em: {caminho_saida}")
